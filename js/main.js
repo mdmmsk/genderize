@@ -1,43 +1,35 @@
+let firstName = 'artem';
 const serverUrl = 'https://api.genderize.io';
-let firstName;
-let url;
-let input = document.querySelector('input');
-const output = document.querySelector('.output__text');
-const btn = document.querySelector('a');
+let url = `${serverUrl}?name=${firstName}`;
 
-// Проверка на наличие цифры в имени
-function checkInput() {
-	outer: for (let char of input.value) {
-		if (isFinite(char)) {
-			input.value = '';
-			break outer;
-		}
-	};
+const UI = {
+	FORM: document.querySelector("form"),
+	INPUT_AREA: document.querySelector(".form__input-name"),
+	RESULT_AREA: document.querySelector(".output__text"),
+	SUBMIT_BTN: document.querySelector(".form__submit-btn"),
 }
 
-btn.onclick = checkFemale;
-let json;
-async function checkFemale() {
-	checkInput();
-	if (input.value !== '') {
-		firstName = input.value;
-		url = `${serverUrl}?name=${firstName}`;
-		let outputData = await fetch(url);
-		json = await outputData.json();
-		output.style = ''
-		output.innerHTML = `${firstName}-${json.gender}`;
-		genders();
-	} else {
-		output.innerHTML = 'Enter the correct name';
-		output.style = 'color: #FF4500'
-		document.body.style='';
-	};
-};
+UI.FORM.onsubmit = async function(){
+	firstName = UI.INPUT_AREA.value;
+	url = `${serverUrl}?name=${firstName}`;
+	await request(url);
+	return false;
+}
 
-function genders() {
-	if (json.gender == 'male') {
-		document.body.style = 'background: #1E90FF';
-	} else {
-		document.body.style = 'background: #FF1493';
+async function request(url){
+	const response = await fetch(url);
+	let obj = await response.json();
+	if(response.ok){
+		responseTreatment(obj)
+	}else{
+		responseTreatment(null, obj.error)
+	}
+}
+
+function responseTreatment(inutData, error){
+	if(inutData){
+		UI.RESULT_AREA.innerHTML = `${firstName} - ${inutData.gender}`;
+	}else{
+		alert(error);
 	}
 }
