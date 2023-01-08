@@ -1,0 +1,50 @@
+@import "_nullstyle";
+@import url("https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@600&display=swap");
+
+body {
+	background: rgb(29, 207, 148);
+	font-family: "Smooch Sans", sans-serif;
+}
+.wrapper {
+	padding: 20% 0 0 0;
+}
+.container {
+	max-width: 400px;
+	margin: 0 auto;
+}
+.checkGender {
+	&__form {
+		display: flex;
+		justify-content: space-between;
+	}
+	&__output {
+		margin-top: 10px;
+		border: 3px solid rgb(255, 255, 255);
+		min-height: 30px;
+		border-radius: 5px;
+	}
+}
+.form{
+	&__input-name{
+		width: 350px;
+		background: rgba(255, 255, 255, 0);
+		border-bottom: 3px solid rgb(255, 255, 255);
+		padding: 0 0 0 5px;
+		font-size: 21px;
+		color: aliceblue;
+	}
+	&__submit-btn{
+		width: 30px;
+		height: 30px;
+		background: url("/img/lupa.png") no-repeat;
+		background-size: auto 100%;
+		margin: 0 0 0 5px;
+	}
+}
+.output {
+	&__text {
+		font-size: 21px;
+		color: aliceblue;
+		padding: 5px;
+	}
+}

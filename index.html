@@ -5,26 +5,23 @@
 	<title>checkGenerName</title>
 	<link rel="stylesheet" href="css/style.css">
 	<meta http http-equiv="content-type" content="text/html;charset=UTF-8" />
-	<script type="text/javascript" src=" https://code.jquery.com/jquery-1.11.2.js "></script>
 </head>
 
 <body>
 	<div class="wrapper">
 		<div class="container">
 			<div class="checkGender">
-				<div class="checkGender__input">
-					<input type="text" value="" >
-					<a href="#"></a>
-				</div>
+				<form class="checkGender__form" onsubmit="alert(`sdf`);return false;">
+					<input type="text" value="" pattern = "^[a-zA-Z]+$" class="form__input-name">
+					<input type="submit" value="" class="form__submit-btn">
+				</form>
 				<div class="checkGender__output">
 					<div class="output__text">Lorem ipsum dolor sit adipisicing elit. Magni, labore?</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	<script src="/js/main.js"></script>
-
 </body>
 
 </html>

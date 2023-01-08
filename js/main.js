@@ -9,7 +9,8 @@ const UI = {
 	SUBMIT_BTN: document.querySelector(".form__submit-btn"),
 }
 
-UI.FORM.onsubmit = async function(){
+UI.FORM.onsubmit = async function(event){
+	event.preventDefault();
 	firstName = UI.INPUT_AREA.value;
 	url = `${serverUrl}?name=${firstName}`;
 	await request(url);
